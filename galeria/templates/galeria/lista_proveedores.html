@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Proveedores</title>
+    {% load static %}
+    <link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0c0b0b; /* Cambia este color al que prefieras */
+        }
+        .center-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">SOMOS UWU</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'anime' %}">ANIME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'games' %}">GAMES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'rock' %}">ROCK</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'alumnos_add' %}">CONTACTO</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <h3 class="center-text text-white">Lista de Proveedores</h3>
+    <div class="container">
+        <a href="{% url 'crear_proveedor' %}" class="btn btn-primary mb-3">Agregar</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre Empresa</th>
+                    <th>RUT</th>
+                    <th>Razón Social</th>
+                    <th>País</th>
+                    <th>Tipo de Pago</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if proveedores %}
+                    {% for proveedor in proveedores %}
+                    <tr>
+                        <td>{{ proveedor.nombre_empresa }}</td>
+                        <td>{{ proveedor.rut }}</td>
+                        <td>{{ proveedor.razon_social }}</td>
+                        <td>{{ proveedor.pais }}</td>
+                        <td>{{ proveedor.get_tipo_pago_display }}</td>
+                        <td><a href="{% url 'eliminar_proveedor' proveedor.id %}" class="btn btn-danger">Eliminar</a></td>
+                        <td><a href="{% url 'editar_proveedor' proveedor.id %}" class="btn btn-warning">Modificar</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">No hay proveedores disponibles.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#idMensajes").delay(2000).fadeOut("slow");
+        });
+    </script>
+    <center>
+        <div class="center">
+            <a href="{% url 'dashboard' %}" class="btn btn-primary">VOLVER A MENÚ</a>
+        </div>
+      </center>
+</body>
+</html>

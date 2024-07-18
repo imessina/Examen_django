@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar datos Clientes</title>
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Load static files -->
+    
+    <!-- Custom CSS -->
+    <link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">SOMOS UWU</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'anime' %}">ANIME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'games' %}">GAMES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'rock' %}">ROCK</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'alumnos_add' %}">CONTACTO</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="text-center text-white">Editar datos Clientes</h1><br><br>
+
+        <button type="button" class="btn btn-primary">
+            <a href="{% url 'alumnosAdd' %}" class="text-white">Agregar Contacto</a>
+        </button>
+
+        <div id="idMensajes" class="alert alert-info mt-3">
+            {% if mensaje %}
+                {{ mensaje }}
+            {% endif %}
+        </div>
+
+        <table class="table table-bordered mt-3 text-center text-white">
+            {% if alumnos %}
+                <thead>
+                    <tr>
+                        <th>Rut</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Eliminar</th>
+                        <th>Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in alumnos %}
+                        <tr>
+                            <td>{{ x.rut }}</td>
+                            <td>{{ x.nombre }}</td>
+                            <td>{{ x.apellido_paterno }}</td>
+                            <td>{{ x.email }}</td>
+                            <td><a href="{% url 'alumnos_del' pk=x.rut %}" class="btn btn-danger">Eliminar</a></td>
+                            <td><a href="{% url 'alumnos_findEdit' pk=x.rut %}" class="btn btn-warning">Modificar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+        </table>
+    </div>
+
+    <div class="text-center">
+        <center>
+            <div class="center">
+                <a href="{% url 'dashboard' %}" class="btn btn-primary">VOLVER A MENÚ</a>
+            </div>
+          </center>
+            </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#idMensajes").delay(2000).fadeOut("slow");
+        });
+    </script>
+</body>
+</html>

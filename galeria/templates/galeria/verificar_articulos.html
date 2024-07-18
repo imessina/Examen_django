@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificar Artículos</title>
+</head>
+<body>
+    <h2>Artículos en la Base de Datos</h2>
+    <ul>
+        {% for articulo in articulos %}
+            <li>{{ articulo.nombre }} - SKU: {{ articulo.sku }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

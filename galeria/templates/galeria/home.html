@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Bienvenido, {{ user.username }}</h2>
+        <a href="{% url 'crud_generos' %}" class="btn btn-primary">CRUD Géneros</a>
+        <a href="{% url 'crud_articulos' %}" class="btn btn-primary">CRUD Artículos</a>
+        <!-- Añadir futuros CRUD aquí -->
+        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UWU Art</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">SOMOS UWU</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'anime' %}">ANIME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'games' %}">GAMES</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'rock' %}">ROCK</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'alumnos_add' %}">CONTACTO</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1 class="center-text">ZONA ROCKERA!</h1>
+    <div class="d-flex flex-wrap justify-content-around">
+        <div class="card bg-dark text-white">
+            <img src="{% static 'imagenes/rockk.jpg' %}" class="card-img-top" alt="Zona Rockera">
+            <div class="card-body">
+                <center>
+                    <h5 class="card-title">ALBUMES DE TU MUSICA FAVORITA</h5>
+                    <ul>
+                        <li>ROCK</li>
+                        <li>METAL</li>
+                        <li>GRIND</li>
+                        <li>PUNK</li>
+                    </ul>
+                    <p class="card-text">CD'S-TAPES-VINILOS-DIGITAL</p>
+                    <p class="card-text">Precios desde $5.990</p>
+                    <p class="card-text">Prices ranging from $7 USD</p>
+                    <p class="card-text">Envíos a todo Chile y al Extranjero</p>
+                    <a href="{% url 'comprar' %}" class="btn btn-primary">COMPRAR</a>
+                    <a href="{% url 'index' %}" class="btn btn-secondary">VOLVER</a>
+                </center>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Artículos</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">SOMOS UWU</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link btn btn-link" style="color: inherit;">Cerrar Sesión</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="center-text">Listado de Artículos</h1>
+        <div class="table-container">
+            <a href="{% url 'crear_articulo' %}" class="btn btn-primary mb-3">Agregar</a>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>SKU</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Eliminar</th>
+                        <th>Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for articulo in articulos %}
+                    <tr>
+                        <td>{{ articulo.sku }}</td>
+                        <td>{{ articulo.nombre }}</td>
+                        <td>{{ articulo.descripcion }}</td>
+                        <td>{{ articulo.precio }}</td>
+                        <td>{{ articulo.stock }}</td>
+                        <td>
+                            {% if articulo.id %}
+                                <a href="{% url 'eliminar_articulo' articulo.id %}" class="btn btn-danger">Eliminar</a>
+                            {% else %}
+                                <span class="text-muted">No disponible</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if articulo.id %}
+                                <a href="{% url 'editar_articulo' articulo.id %}" class="btn btn-warning">Modificar</a>
+                            {% else %}
+                                <span class="text-muted">No disponible</span>
+                                
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <center>
+                <div class="center">
+                    <a href="{% url 'dashboard' %}" class="btn btn-primary">VOLVER A MENÚ</a>
+                </div>
+              </center>
+        </div>
+    </div>
+    
+</body>
+</html>
