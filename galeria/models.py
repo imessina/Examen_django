@@ -15,6 +15,7 @@ class Articulo(models.Model):
         return self.nombre
 
 
+
 class Proveedor(models.Model):
     NOMBRE_EMPRESA_MAX_LENGTH = 100
     RUT_MAX_LENGTH = 12

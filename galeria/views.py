@@ -97,7 +97,6 @@ def cliente_eliminar(request, pk):
     return render(request, 'cliente_confirmar_eliminacion.html', {'cliente': cliente})
 
 
-
 #crear contacto
 def contacto_crear(request):
     if request.method == 'POST':
@@ -422,7 +421,7 @@ def eliminar_proveedor(request, id):
     return render(request, 'galeria/eliminar_proveedor.html', {'proveedor': proveedor})
 
 
-#proteger los crdu
+#proteger los crud con login
 @login_required
 def lista_tipos_productos(request):
     tipos_productos = TipoProducto.objects.all()

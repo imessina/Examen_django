@@ -17,6 +17,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                    Suscríbete!
+                </button>
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'index' %}">INICIO</a>
                 </li>
@@ -28,6 +31,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'rock' %}">ROCK</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'store' %}">TIENDA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'alumnos_add' %}">CONTACTO</a>
@@ -52,9 +58,7 @@
 
     <div class="container">
         <h1 class="center-text">
-            <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#exampleModal">
-                Suscríbete!
-            </button>
+            
         </h1>
         <div id="carouselExample" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
